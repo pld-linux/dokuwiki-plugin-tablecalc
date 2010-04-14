@@ -7,7 +7,7 @@ Release:	1
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://narezka.ru/cfd/msgdb/740/tablecalc.zip
-# Source0-md5:	086d8a7f4dab1fac9d0cef73b9f75b42
+# Source0-md5:	fee18e13077ca5bba28165e4e4e68b8e
 URL:		http://wiki.splitbrain.org/plugin:tablecalc
 BuildRequires:	rpmbuild(macros) >= 1.520
 Requires:	dokuwiki >= 20061106
