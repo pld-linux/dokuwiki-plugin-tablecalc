@@ -10,6 +10,7 @@ Source0:	http://narezka.ru/cfd/msgdb/740/tablecalc.zip
 # Source0-md5:	fee18e13077ca5bba28165e4e4e68b8e
 URL:		http://wiki.splitbrain.org/plugin:tablecalc
 BuildRequires:	rpmbuild(macros) >= 1.520
+BuildRequires:	unzip
 Requires:	dokuwiki >= 20061106
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
