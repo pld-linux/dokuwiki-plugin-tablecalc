@@ -1,17 +1,22 @@
+%define		subver	2017-02-09
+%define		ver		%(echo %{subver} | tr -d -)
 %define		plugin		tablecalc
+%define		php_min_version 5.3.0
+%include	/usr/lib/rpm/macros.php
 Summary:	DokuWiki tablecalc plugin
 Summary(pl.UTF-8):	Wtyczka tablecalc dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
-Version:	20100413
+Version:	%{ver}
 Release:	1
 License:	GPL v2
 Group:		Applications/WWW
-Source0:	http://narezka.ru/cfd/msgdb/740/tablecalc.zip
-# Source0-md5:	fee18e13077ca5bba28165e4e4e68b8e
-URL:		http://wiki.splitbrain.org/plugin:tablecalc
+Source0:	https://narezka.org/cfd/msgdb/740/tablecalc.zip
+# Source0-md5:	6a68227688486e83b8b7a9dd573f4a87
+URL:		https://www.dokuwiki.org/plugin:tablecalc
 BuildRequires:	rpmbuild(macros) >= 1.520
 BuildRequires:	unzip
-Requires:	dokuwiki >= 20061106
+Requires:	dokuwiki >= 20131208
+Requires:	php(core) >= %{php_min_version}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -26,14 +31,15 @@ Adds ability to use Excel-style formulas in tables.
 %setup -qc
 mv %{plugin}/* .
 
+find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
+
+%build
 # 13-04-10
 version=$(awk -F"'" '/date/{split($4, a, "-"); printf("%04d-%02d-%02d\n", 2000 + a[3], a[2], a[1])}' syntax.php)
 if [ "$(echo "$version" | tr -d -)" != %{version} ]; then
 	: %%{version} mismatch
 	exit 1
 fi
-
-find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
 %install
 rm -rf $RPM_BUILD_ROOT
