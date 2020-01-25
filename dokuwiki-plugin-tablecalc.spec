@@ -2,7 +2,6 @@
 %define		ver		%(echo %{subver} | tr -d -)
 %define		plugin		tablecalc
 %define		php_min_version 5.3.0
-%include	/usr/lib/rpm/macros.php
 Summary:	DokuWiki tablecalc plugin
 Summary(pl.UTF-8):	Wtyczka tablecalc dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
